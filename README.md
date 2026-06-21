@@ -60,51 +60,125 @@ El ecosistema de este entorno está construido utilizando herramientas clave de 
 
 * <div align="center">
   <img src="images/archwall2.png" alt="Mi escritorio de Batman" width="600">
+
 </div>
 
-## 🚀 Getting Started & Installation
+
+## 🚀 Automation with install.sh (Recommended)
+
+To simplify the full setup process, this repository includes an `install.sh` script.
+
+The goal of this script is to centralize the entire configuration workflow, eliminating the need for manual setup steps.
+
+---
+
+### ⚙️ What does install.sh do?
+
+This script automates the following tasks:
+
+- 📦 Installs all required packages using `pacman`
+- 📁 Copies all dotfiles into `~/.config/`
+- 🔐 Sets executable permissions (`chmod +x`)
+- 🎨 Prepares the BSPWM environment (bar, terminal, compositor, etc.)
+
+---
+
+### 🧠 Main advantage
+
+Instead of manually configuring each component, the user only needs to run a single command to fully set up the environment.
+
+This reduces human error, prevents incomplete setups, and ensures consistency across installations.
+
+---
+
+### 🚀 One-command installation
+
+After cloning the repository:
+
+```bash id="eng2"
+chmod +x install.sh
+./install.sh ```
+```
+## without install.sh file in the same way we clone the repository
+
+
+## 1. 🚀 Getting Started & Installation
 
 Follow these steps carefully to deploy this environment on a clean Arch Linux installation without breaking the session on startup.
 
 ### 📋 Prerequisites & Dependencies
 
-Before copying the configuration files to your `~/.config/` directory, you **must** install all the base binaries and components. Missing these will result in a black screen upon login.
+Before copying the configuration files to your `~/.config/` directory, you **must** install all the base binaries and components. Missing these will result in a black screen upon login. Run the following command to install the complete ecosystem:
 
-Run the following command to install the complete ecosystem:
 ```bash
 sudo pacman -S --needed bspwm sxhkd kitty fastfetch picom polybar rofi neovim zsh bash feh xorg-xrandr
+```
+## 2. 🪟 Display Manager or `.xinitrc`
 
-font-awesome 📦 Fonts & Icons
-This setup relies on specific glyphs for polybar and rofi. Installing it without the proper typography will cause missing icons (empty squares). Install the complete Nerd Fonts package:
+`bspwm` does not start automatically like heavy desktop environments (GNOME or KDE). You must manually define how your user session will start based on your setup:
 
-Bash
-sudo pacman -S ttf-nerd-fonts-symbols-common ttf-jetbrains-mono-nerd
-⚙️ Deployment & Setup
-1. Clone and Copy Configurations
-Clone this repository and sync the dotfiles into your local system:
+### 💠 If you use LightDM / SDDM
+No additional configuration is required. `bspwm` will automatically show up as an available session on your login screen.
 
-Bash
-git clone [https://github.com/AlfredProtocol/ArchAmbience.git](https://github.com/AlfredProtocol/ArchAmbience.git)
-cd ArchAmbience
-# Copying config directories to your local ~/.config
-cp -r bspwm fastfetch kitty nvim picom polybar rofi sxhkd ~/.config/
-# Copying shell environments
-cp .bashrc .zshrc ~/
-2. Make Scripts Executable (Crucial)
-Startup scripts require execution permissions to launch the environment and modules correctly. Grant permissions using:
+### 💻 If you use `startx` (Console boot)
+Edit your startup file with your preferred editor:
 
-Bash
+```bash
+nano ~/.xinitrc
+
+```
+Add the following line at the very end of the file to launch the window manager:
+```
+exec bspwm
+```
+## 3. 🔐 Execution Permissions (Common Mistake)
+
+Startup and setup scripts **require execution privileges** to run correctly. These files often lose their executable permissions when cloned from GitHub. You must manually grant permissions after copying them to your system:
+
+```bash
 chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/polybar/launch.sh
 chmod +x ~/ArchAmbience/install.sh
-3. Configure Session Startup
-bspwm does not start automatically like heavy desktop environments (GNOME/KDE). Choose your preferred login method:
+```
+## 4. 🔤 Fonts & Icons
+polybar and rofi rely heavily on specific glyphs (Nerd Fonts or Font Awesome). Without these fonts installed, you will experience empty squares or broken symbols across your status bar and menus.
 
-Using a Display Manager (SDDM / LightDM): No extra steps needed. They will automatically detect bspwm as an available session on your login screen.
+Install the recommended font package to fix this:
+```
+sudo pacman -S ttf-nerd-fonts-symbols-common ttf-jetbrains-mono-nerd
+```
 
-Using Boot from Console (startx): Append the following execution line to the very end of your ~/.xinitrc file:
+
+## 5. 📁 Static File Paths (CRITICAL)
+
+In your `bspwmrc` (and potentially other configurations like `polybar` or `sxhkd`), there are static absolute paths bound to a specific username. For example:
+
+```bash
+/home/alfredprotocol/Downloads/BatmanRedWall.png
+```
+
+### ⚠️ How to fix this
+Before launching your environment, check your configuration files and replace any absolute paths containing alfredprotocol with your actual username or the dynamic home directory shortcut (~/ or $HOME):
+
+Find static paths in your configurations:
+
+```grep -r "alfredprotocol" ~/.config/ ```
+* **Replace them manually in your files (bspwmrc, config.ini, etc.) with your own user path:**
 
 Bash
-exec bspwm
-⚠️ Important Notes for Users
-Path Normalization: The current bspwmrc file contains static paths for the background wallpaper pointing to a custom directory. If your username is not alfredprotocol, make sure to edit ~/.config/bspwm/bspwmrc and adjust the path using the global ~/ variable to match your own setup.
+# Replace /home/alfredprotocol with /home/YOUR_USERNAME
+
+**Tip:** Usar el comando `grep` que incluimos en la guía le permitirá a cualquiera que clone tu repositorio encontrar instantáneamente en qué líneas de qué archivos se quedó escrito tu nombre de usuario `alfredprotocol` para corregirlo en segundos.
+## 💡 Result
+
+* **Once the script finishes:**
+
+* **BSPWM is fully configured**
+Polybar, Rofi, and Fastfetch are ready to use
+All required permissions are correctly set
+The system is immediately usable
+## 🧩 This repository follows the principle:
+
+“Zero manual setup, full automated rice deployment”
+The goal is to allow any user to replicate the exact environment without additional configuration steps.
+
