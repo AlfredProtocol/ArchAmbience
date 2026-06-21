@@ -52,6 +52,12 @@ El ecosistema de este entorno está construido utilizando herramientas clave de 
 * **Text Editor:** `neovim` (Entorno de desarrollo y edición de scripts optimizado desde consola)
 * **Shell:** `zsh` / `bash` (Entornos de comandos interactivos y automatización)
 
+### Here some images about the project
+
 * <div align="center">
   <img src="images/archwall.png" alt="Mi escritorio de Batman" width="600">
+</div>
+
+* <div align="center">
+  <img src="images/archwall2.png" alt="Mi escritorio de Batman" width="600">
 </div>
