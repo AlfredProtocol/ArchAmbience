@@ -61,3 +61,50 @@ El ecosistema de este entorno está construido utilizando herramientas clave de 
 * <div align="center">
   <img src="images/archwall2.png" alt="Mi escritorio de Batman" width="600">
 </div>
+
+## 🚀 Getting Started & Installation
+
+Follow these steps carefully to deploy this environment on a clean Arch Linux installation without breaking the session on startup.
+
+### 📋 Prerequisites & Dependencies
+
+Before copying the configuration files to your `~/.config/` directory, you **must** install all the base binaries and components. Missing these will result in a black screen upon login.
+
+Run the following command to install the complete ecosystem:
+```bash
+sudo pacman -S --needed bspwm sxhkd kitty fastfetch picom polybar rofi neovim zsh bash feh xorg-xrandr
+
+font-awesome 📦 Fonts & Icons
+This setup relies on specific glyphs for polybar and rofi. Installing it without the proper typography will cause missing icons (empty squares). Install the complete Nerd Fonts package:
+
+Bash
+sudo pacman -S ttf-nerd-fonts-symbols-common ttf-jetbrains-mono-nerd
+⚙️ Deployment & Setup
+1. Clone and Copy Configurations
+Clone this repository and sync the dotfiles into your local system:
+
+Bash
+git clone [https://github.com/AlfredProtocol/ArchAmbience.git](https://github.com/AlfredProtocol/ArchAmbience.git)
+cd ArchAmbience
+# Copying config directories to your local ~/.config
+cp -r bspwm fastfetch kitty nvim picom polybar rofi sxhkd ~/.config/
+# Copying shell environments
+cp .bashrc .zshrc ~/
+2. Make Scripts Executable (Crucial)
+Startup scripts require execution permissions to launch the environment and modules correctly. Grant permissions using:
+
+Bash
+chmod +x ~/.config/bspwm/bspwmrc
+chmod +x ~/.config/polybar/launch.sh
+chmod +x ~/ArchAmbience/install.sh
+3. Configure Session Startup
+bspwm does not start automatically like heavy desktop environments (GNOME/KDE). Choose your preferred login method:
+
+Using a Display Manager (SDDM / LightDM): No extra steps needed. They will automatically detect bspwm as an available session on your login screen.
+
+Using Boot from Console (startx): Append the following execution line to the very end of your ~/.xinitrc file:
+
+Bash
+exec bspwm
+⚠️ Important Notes for Users
+Path Normalization: The current bspwmrc file contains static paths for the background wallpaper pointing to a custom directory. If your username is not alfredprotocol, make sure to edit ~/.config/bspwm/bspwmrc and adjust the path using the global ~/ variable to match your own setup.
