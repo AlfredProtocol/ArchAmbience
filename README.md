@@ -35,22 +35,22 @@
 
 ## 🛡️ About The Project
 
-**ArchAmbience** es un entorno de trabajo e investigación de ciberseguridad minimalista, altamente optimizado y estéticamente personalizado bajo una temática táctica (*Dark/Batman Mode*). Este repositorio almacena mis archivos de configuración (*dotfiles*) para replicar de forma idéntica un sistema operativo enfocado en el hacking ético y el desarrollo eficiente.
+**ArchAmbience** is a minimalist, highly optimized, and aesthetically customized cybersecurity workspace and research environment built around a tactical theme (*Dark/Batman Mode*). This repository stores my configuration files (*dotfiles*) to replicate an identical operating system setup focused on ethical hacking and efficient development.
 
-A diferencia de los entornos de escritorio pesados y convencionales, este setup utiliza un gestor de ventanas por mosaico (**Tiling Window Manager**) que maximiza el rendimiento del hardware y la velocidad del operador mediante el uso exclusivo del teclado.
+Unlike heavy and conventional desktop environments, this setup uses a **tiling window manager** that maximizes hardware performance and operator speed through full keyboard-based workflow.
 
 ### 🧰 Built With / Core Components
 
-El ecosistema de este entorno está construido utilizando herramientas clave de la comunidad de código abierto:
+The ecosystem of this environment is built using key open-source community tools:
 
-* **Window Manager:** `bspwm` (Gestión de ventanas por mosaico basada en espacio binario)
-* **Hotkeys:** `sxhkd` (Demonio de atajos de teclado independiente y de baja latencia)
-* **Terminal:** `kitty` (Emulador de terminal hiperrápido renderizado por GPU con soporte de imágenes nativo)
-* **Status Bar:** `polybar` (Barra de estado modular, informativa y altamente personalizable)
-* **Compositor:** `picom` (Efectos visuales, transparencias difuminadas y sombras)
-* **App Launcher:** `rofi` (Lanzador de aplicaciones táctico y menú de búsqueda dinámica)
-* **Text Editor:** `neovim` (Entorno de desarrollo y edición de scripts optimizado desde consola)
-* **Shell:** `zsh` / `bash` (Entornos de comandos interactivos y automatización)
+* **Window Manager:** `bspwm` (Binary Space Partitioning window management system)
+* **Hotkeys:** `sxhkd` (Independent and low-latency hotkey daemon)
+* **Terminal:** `kitty` (GPU-accelerated, high-performance terminal emulator with native image rendering support)
+* **Status Bar:** `polybar` (Modular, informative, and highly customizable status bar)
+* **Compositor:** `picom` (Visual effects, transparency blur, and shadows)
+* **App Launcher:** `rofi` (Tactical application launcher and dynamic search menu)
+* **Text Editor:** `neovim` (Terminal-optimized development and scripting environment)
+* **Shell:** `zsh` / `bash` (Interactive command-line environments and automation layers)
 
 ### Here some images about the project
 
