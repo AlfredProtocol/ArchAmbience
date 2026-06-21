@@ -168,7 +168,7 @@ Find static paths in your configurations:
 Bash
 # Replace /home/alfredprotocol with /home/YOUR_USERNAME
 
-**Tip:** Usar el comando `grep` que incluimos en la guía le permitirá a cualquiera que clone tu repositorio encontrar instantáneamente en qué líneas de qué archivos se quedó escrito tu nombre de usuario `alfredprotocol` para corregirlo en segundos.
+**Tip:** Tip: Using the grep command that we included in the guide will allow anyone cloning your repository to instantly find which lines of which files your alfredprotocol username was written on to correct it in seconds.
 ## 💡 Result
 
 * **Once the script finishes:**
