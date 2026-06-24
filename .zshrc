@@ -128,3 +128,24 @@ sudo-command-line() {
 
 zle -N sudo-command-line
 bindkey '\e\e' sudo-command-line
+
+# settarget polibar
+
+zle -N sudo-command-line
+bindkey '\e\e' sudo-command-line
+
+# polibar settarget
+settarget() {
+    if [ $# -ne 2 ]; then
+        echo "Uso: settarget <IP> <Nombre>"
+        return 1
+    fi
+
+    echo "$1 $2" > ~/.config/bin/target
+    echo "Target actualizado: $1 - $2"
+}
+
+cleartarget() {
+    > ~/.config/bin/target
+    echo "Target eliminado"
+}
