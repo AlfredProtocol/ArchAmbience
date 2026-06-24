@@ -182,3 +182,25 @@ The system is immediately usable
 “Zero manual setup, full automated rice deployment”
 The goal is to allow any user to replicate the exact environment without additional configuration steps.
 
+
+## SETTARGET AND VPN_STATUS
+We'll use the right-hand bar of the polybar, which corresponds to the target, with the command `settarget x.x.x.x machine name`. For example, `settarget 10.10.10.10 PCHACK` will make the IP address visible, and to clear it, we simply type `cleartarget....`. It's important to verify that you have OpenVPN installed.
+
+vpn_status
+We verify that we have OpenVPN installed: `sudo pacman -S openvpn`
+
+1. Log in to Hackthebox
+2. Click "Connect" and select "Machines"
+3. Select OpenVPN
+4. Select TCP
+5. Download it
+
+6. Create a Hackthebox directory and navigate to it
+7. Create a directory named HTB and navigate to it
+8. Create a directory named VPN and navigate to it
+9. Log in as root and enter `sudo su`
+10. Use the command `openvpn file.ovpn`
+
+*You will be connected and the status in the polybar will change*
+
+11. To exit, simply press Ctrl+C
